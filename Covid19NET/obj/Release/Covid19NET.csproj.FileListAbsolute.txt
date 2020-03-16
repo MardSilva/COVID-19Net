@@ -1,0 +1,15 @@
+C:\Users\ejsil\source\repos\Covid19NET\Covid19NET\bin\Release\Covid19NET.exe.config
+C:\Users\ejsil\source\repos\Covid19NET\Covid19NET\bin\Release\Covid19NET.exe
+C:\Users\ejsil\source\repos\Covid19NET\Covid19NET\bin\Release\Covid19NET.pdb
+C:\Users\ejsil\source\repos\Covid19NET\Covid19NET\bin\Release\MetroFramework.Design.dll
+C:\Users\ejsil\source\repos\Covid19NET\Covid19NET\bin\Release\MetroFramework.dll
+C:\Users\ejsil\source\repos\Covid19NET\Covid19NET\bin\Release\MetroFramework.Fonts.dll
+C:\Users\ejsil\source\repos\Covid19NET\Covid19NET\bin\Release\Newtonsoft.Json.dll
+C:\Users\ejsil\source\repos\Covid19NET\Covid19NET\bin\Release\Newtonsoft.Json.xml
+C:\Users\ejsil\source\repos\Covid19NET\Covid19NET\obj\Release\Covid19NET.csprojAssemblyReference.cache
+C:\Users\ejsil\source\repos\Covid19NET\Covid19NET\obj\Release\Covid19NET.frmPrincipal.resources
+C:\Users\ejsil\source\repos\Covid19NET\Covid19NET\obj\Release\Covid19NET.Properties.Resources.resources
+C:\Users\ejsil\source\repos\Covid19NET\Covid19NET\obj\Release\Covid19NET.csproj.GenerateResource.cache
+C:\Users\ejsil\source\repos\Covid19NET\Covid19NET\obj\Release\Covid19NET.csproj.CopyComplete
+C:\Users\ejsil\source\repos\Covid19NET\Covid19NET\obj\Release\Covid19NET.exe
+C:\Users\ejsil\source\repos\Covid19NET\Covid19NET\obj\Release\Covid19NET.pdb
