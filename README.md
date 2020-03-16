@@ -16,4 +16,10 @@ A simple client (winforms) whos use JSON to get info about Coronavirus - made in
 #You can set themes, too! - Dark or Light. And color too! (Light Theme)
 ![Captura de tela](https://github.com/MardSilva/COVID-19Net/blob/master/screenshots/themes2.png)
 
+If you want to download, click on this link -> http://www.mediafire.com/file/pr48ufuqocvc5v0/COVID-19Net.rar/file
+1) Extract the files;
+2) Run the setup exe;
+3) Open Start Menu and search for Eymard Silva (Esware);
+4) Tadaaa! Run and get informations :)
+
 #Version - 1.0.0.2 (Still Updating)
