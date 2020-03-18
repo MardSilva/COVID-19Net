@@ -14,7 +14,7 @@ As you can see below, you can navigate through the tools through the tabs or rad
 As you can see below, you can get worldwide data (grand total) and also a table of data by countries:
 ![Captura de tela](https://github.com/MardSilva/COVID-19Net/blob/master/screenshots/tools.gif)
 
-# General Info about COVID-19Net - Mundial Info and All Countries Info
+# General Info about COVID-19Net - Themes Personalization
 As you can see below, you can get to customize your application's interface with colors and themes!
 ![Captura de tela](https://github.com/MardSilva/COVID-19Net/blob/master/screenshots/themes.gif)
 
