@@ -19,6 +19,6 @@ As you can see below, you can get to customize your application's interface with
 ![Captura de tela](https://github.com/MardSilva/COVID-19Net/blob/master/screenshots/themes.gif)
 
 # How can I download the app?
->> Go to the 'Installers' folder --> https://github.com/MardSilva/COVID-19Net/tree/master/Installers
+Go to the 'Installers' folder --> https://github.com/MardSilva/COVID-19Net/tree/master/Installers
 
->> You can download following this link --> https://github.com/MardSilva/COVID-19Net/blob/master/Installers/COVID-19Net_v2.0-setup.exe?raw=true
+You can download following this link --> https://github.com/MardSilva/COVID-19Net/blob/master/Installers/COVID-19Net_v2.0-setup.exe?raw=true
