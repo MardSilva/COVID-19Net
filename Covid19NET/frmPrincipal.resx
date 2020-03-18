@@ -117,10 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="metroLabel18.Text" xml:space="preserve">
-    <value>Os changelogs, nada mais são que o histórico das mudanças que acontece entre as versões liberadas do aplicativo. 
-Ou seja, todo o histórico de tudo que foi feito desde a primeira versão, se encontra aqui. E claro, alguns agradeçimentos também!</value>
-  </data>
   <data name="metroLabel9.Text" xml:space="preserve">
     <value>O intuito deste pequeno aplicativo, é te manter informado em relação aos números do COVID-19 (Coronavírus) e para isso, ele se 
 comunica com uma API (através de endpoints) que atualizam esses dados diariamente, 
@@ -133,6 +129,34 @@ Obrigado por usá-lo.
 E lembre-se de todos os cuidados básicos que já aprendemos desde nossa infância. 
 Por hora, essa é uma das maiores armas que nós temos.
 </value>
+  </data>
+  <metadata name="colPaises.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="colCasos.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="colCasosHoje.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="colMortes.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="colMortesDia.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="colRecuperados.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="colAtivos.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="colCriticos.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="metroLabel18.Text" xml:space="preserve">
+    <value>Os changelogs, nada mais são que o histórico das mudanças que acontece entre as versões liberadas do aplicativo. 
+Ou seja, todo o histórico de tudo que foi feito desde a primeira versão, se encontra aqui. E claro, alguns agradeçimentos também!</value>
   </data>
   <metadata name="mtsmGerenciadordeEstilo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>

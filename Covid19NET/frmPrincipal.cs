@@ -13,6 +13,8 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using System.IO;
 using Newtonsoft.Json.Linq;
+using ChoETL;
+using System.Xml.Linq;
 
 namespace Covid19NET
 {
@@ -38,7 +40,6 @@ namespace Covid19NET
                     break;
             }
         }
-
 
         private void mtcbCores_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -119,7 +120,7 @@ namespace Covid19NET
                 if (!string.IsNullOrEmpty(strDadosAPI))
                 {
                     mtlblAtualizando.Text = "";
-                    mtlblAtualizando.Text = "Os dados baixados/atualizados da API foram exibidos com sucesso!";
+                    mtlblAtualizando.Text = "Os dados da API foram baixados/atualizados com sucesso!";
 
                     DialogResult drSalvarResultado = MessageBox.Show("Deseja salvar o conteúdo baixado da API no seu computador?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -170,6 +171,7 @@ namespace Covid19NET
                 {
                     mtlblAtualizando.Text = "";
                     mtlblAtualizando.Visible = false;
+                    MessageBox.Show("Não foi possível obter os dados da API nesse momento. Possivelmente, estão atualizando os dados, caso contrário, verifique sua conexão com a internet.\n\nVerifque ou aguarde um momento e tente novamente.", "Confirmação", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
                 #endregion Fim - Busca de Dados da API
@@ -230,7 +232,7 @@ namespace Covid19NET
             }
 
             //Criação do arquivo JSON_DadosMundiais_DiaMesAno.json
-            string strArquivoJSON = Path.GetDirectoryName(strDir) + "\\Dados Mundiais\\" + "JSON_DadosMundiais_" + DateTime.Today.ToString("dd-MM-yyyy") + ".json";
+            string strArquivoJSON = Path.GetDirectoryName(strDir) + "\\Dados Mundiais\\" + "JSON_DadosMundiais_" + DateTime.Today.ToString("dd_MM_yyyy") + "_" + DateTime.Now.ToString("HH_mm_ss") + ".json";
 
             if (!File.Exists(strArquivoJSON))
             {
@@ -264,7 +266,7 @@ namespace Covid19NET
                 if (!string.IsNullOrEmpty(strDadosAPI))
                 {
                     mtlblTabela.Text = "";
-                    mtlblTabela.Text = "Os dados baixados/atualizados da API foram exibidos com sucesso!";
+                    mtlblTabela.Text = "Os dados da API foram baixados/atualizados com sucesso!";
 
                     DialogResult drSalvarResultado = MessageBox.Show("Deseja salvar o conteúdo baixado da API no seu computador?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -274,16 +276,14 @@ namespace Covid19NET
                         
                         mtlblTabela.Text = "";
 
-                        //Preenchendo o GRID com os dados do JSON vindo do Array
-                        mtrgrdDataGrid.DataSource = JsonConvert.DeserializeObject<List<ClassePaises>>(strDadosAPI);
+                        dtgvDadosTabela.DataSource = JsonConvert.DeserializeObject<List<ClassePaises>>(strDadosAPI);
                         mtlblTabela.Text = "Pronto! Os dados foram atualizados de acordo com a API e preenchidos na Tabela.";
                     }
                     else
                     {
                         mtlblTabela.Text = "";
-                        
-                        //Preenchendo o GRID com os dados do JSON vindo do Array
-                        mtrgrdDataGrid.DataSource = JsonConvert.DeserializeObject<List<ClassePaises>>(strDadosAPI);
+
+                        dtgvDadosTabela.DataSource = JsonConvert.DeserializeObject<List<ClassePaises>>(strDadosAPI);
                         mtlblTabela.Text = "Pronto! Os dados foram atualizados de acordo com a API e preenchidos na Tabela.";
                     }
                 }
@@ -348,7 +348,7 @@ namespace Covid19NET
             }
 
             //Criação do arquivo JSON_DadosMundiais_DiaMesAno.json
-            string strArquivoJSON = Path.GetDirectoryName(strDir) + "\\Dados Paises\\" + "JSON_DadosPaises_" + DateTime.Today.ToString("dd-MM-yyyy") + ".json";
+            string strArquivoJSON = Path.GetDirectoryName(strDir) + "\\Dados Paises\\" + "JSON_DadosPaises_" + DateTime.Today.ToString("dd_MM_yyyy") + "_" + DateTime.Now.ToString("HH_mm_ss") + ".json";
 
             if (!File.Exists(strArquivoJSON))
             {
@@ -367,7 +367,28 @@ namespace Covid19NET
 
         private void mtbExportarCSV_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Esta funcionalidade está em desenvolvimento. Caso seja necessário, por favor, entre em contato através do GitHub ou das minhas redes sociais.", "Confirmação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            {
+                MessageBox.Show("Funcionalidade ainda em desenvolvimento!", "Confirmação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void dtgvDadosTabela_VisibleChanged(object sender, EventArgs e)
+        {
+            if(dtgvDadosTabela.Visible)
+            {
+                CentralizarDados();
+            }
+        }
+
+        private void CentralizarDados()
+        {
+            //Definindo o alinhamento centralizado para as células
+            dtgvDadosTabela.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        }
+
+        private void dtgvDadosTabela_Sorted(object sender, EventArgs e)
+        {
+            dtgvDadosTabela.Sort(dtgvDadosTabela.Columns[1], ListSortDirection.Ascending);
         }
     }
 }

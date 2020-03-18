@@ -33,4 +33,9 @@ namespace Covid19NET
         [JsonProperty("critical")]
         public string Critical { get; set; }
     }
+
+     class ListaDeDadosPaises : List<ClassePaises>
+    {
+
+    }
 }
