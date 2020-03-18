@@ -117,6 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="metroLabel18.Text" xml:space="preserve">
+    <value>Os changelogs, nada mais são que o histórico das mudanças que acontece entre as versões liberadas do aplicativo. 
+Ou seja, todo o histórico de tudo que foi feito desde a primeira versão, se encontra aqui. E claro, alguns agradeçimentos também!</value>
+  </data>
   <data name="metroLabel9.Text" xml:space="preserve">
     <value>O intuito deste pequeno aplicativo, é te manter informado em relação aos números do COVID-19 (Coronavírus) e para isso, ele se 
 comunica com uma API (através de endpoints) que atualizam esses dados diariamente, 

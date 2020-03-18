@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Covid19NET.exe" size="263168">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Covid19NET.exe" size="261632">
       <assemblyIdentity name="Covid19NET" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>njU/LwIkX76FucLXUuFrRlQRzuWyAUgxtCrXNkJSBoA=</dsig:DigestValue>
+        <dsig:DigestValue>kWo3OuJoFPoG1qaUsHp09sMAmw1uPFiLjaIm7PK1zkU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

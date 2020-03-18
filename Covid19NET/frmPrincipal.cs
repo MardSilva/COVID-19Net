@@ -28,7 +28,7 @@ namespace Covid19NET
 
         private void mtcbTemas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch(mtcbTemas.SelectedIndex)
+            switch (mtcbTemas.SelectedIndex)
             {
                 case 0:
                     mtsmGerenciadordeEstilo.Theme = MetroFramework.MetroThemeStyle.Dark; //Dark Color
@@ -39,6 +39,7 @@ namespace Covid19NET
             }
         }
 
+
         private void mtcbCores_SelectedIndexChanged(object sender, EventArgs e)
         {
             mtsmGerenciadordeEstilo.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(mtcbCores.SelectedIndex);
@@ -48,8 +49,12 @@ namespace Covid19NET
         {
             mtlblAtualizando.Visible = false;
             mTabAbas.SelectTab("mtInicio");
+
+            mtcbCores.SelectedIndex = 0;
+            mtcbTemas.SelectedIndex = 1;
         }
 
+        #region Navegação - Botões
         private void mtbInicio_Click(object sender, EventArgs e)
         {
             mTabAbas.SelectTab("mtInicio");
@@ -70,9 +75,17 @@ namespace Covid19NET
             mTabAbas.SelectTab("mtOpcoes");
         }
 
-        private void metroLink1_Click(object sender, EventArgs e)
+        private void mtbVersao_Click(object sender, EventArgs e)
         {
-            Process.Start("https://github.com/javieraviles/covidAPI");
+            mTabAbas.SelectTab("mtChangeLog");
+        }
+
+        #endregion Fim - Navegação Botões
+
+        #region Links - Web
+        private void mtLinkSite_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://www.worldometers.info/");
         }
 
         private void mtLinkEymardGithub_Click(object sender, EventArgs e)
@@ -85,6 +98,8 @@ namespace Covid19NET
             Process.Start("https://www.esware.com.br");
         }
 
+        #endregion Fim Links - Web
+
         private void mtbAtualizarMundial_Click(object sender, EventArgs e)
         {
             DialogResult drResultado = MessageBox.Show("Você deseja obter os dados mais atualizados do COVID-19?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -93,121 +108,266 @@ namespace Covid19NET
             {
                 mtlblAtualizando.Visible = true;
                 mtlblAtualizando.Text = "";
+                
+                string strDadosAPI;
+                
+                mtlblAtualizando.Text = "Os dados estão sendo atualizados, por favor aguarde um momento...";
+                strDadosAPI = BaixarDadosMundiaisAPI();
 
-                string strLink = "https://coronavirus-19-api.herokuapp.com/all";
-
-                if (Uri.IsWellFormedUriString(strLink, UriKind.Absolute))
+                #region Busca de Dados da API
+                //Iniciando a busca dos dados da API
+                if (!string.IsNullOrEmpty(strDadosAPI))
                 {
-                    Uri novoUrl = new Uri(strLink);
+                    mtlblAtualizando.Text = "";
+                    mtlblAtualizando.Text = "Os dados baixados/atualizados da API foram exibidos com sucesso!";
 
-                    HttpWebRequest requisicaoHTTP = WebRequest.Create(novoUrl) as HttpWebRequest;
-                    requisicaoHTTP.Method = "GET";
-                    requisicaoHTTP.ContentType = "application/json";
+                    DialogResult drSalvarResultado = MessageBox.Show("Deseja salvar o conteúdo baixado da API no seu computador?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                    mtlblAtualizando.Text = "Os dados estão sendo atualizados, por favor aguarde...";
-
-                    using (HttpWebResponse respostaHTTP = requisicaoHTTP.GetResponse() as HttpWebResponse)
+                    if(drSalvarResultado == DialogResult.Yes)
                     {
-                        StreamReader novoLeitorStream = new StreamReader(respostaHTTP.GetResponseStream());
-                        string strTexto = novoLeitorStream.ReadToEnd();
+                        mtlblAtualizando.Text = "";
+                        mtlblAtualizando.Text = "Salvando os dados no arquivo JSON... aguarde um momento.";
+                        
+                        SalvarDadosAPIMundial(strDadosAPI);
 
-                        mtlblAtualizando.Text = "Os dados foram baixados/atualizados. Por favor, aguarde...";
+                        mtlblAtualizando.Text = "";
+                        mtlblAtualizando.Text = "O arquivo JSON com os dados baixados da API foram salvos com sucesso!";
 
-                        DialogResult drResultadoJson = MessageBox.Show("Você deseja salvar o conteúdo atualizado na pasta do programa? Nota: Ele será salvo no Formato JSON.", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        mtlblAtualizando.Text = "";
+                        mtlblAtualizando.Text = "Recuperando e preenchendo as informações... por favor, aguarde.";
 
-                        if (drResultadoJson == DialogResult.Yes)
-                        {
-                            string strJSON = strTexto;
-                            strJSON = JsonConvert.SerializeObject(strJSON, Formatting.Indented);
+                        DadosGerais novoDadosGerais = new DadosGerais();
+                        novoDadosGerais = JsonConvert.DeserializeObject<DadosGerais>(strDadosAPI);
 
-                            string strDiretorio = @"C:\COVID-19.NET\Data\JSON\Dados Mundiais";
+                        mtlblCasosMundiais.Text = novoDadosGerais.Cases.ToString() + " Casos Confirmados";
+                        mtlblMortesMundiais.Text = novoDadosGerais.Deaths.ToString() + " Mortes Confirmadas";
+                        mtlblRecuperados.Text = novoDadosGerais.Recovered.ToString() + " Casos Revertidos";
 
+                        mtlblAtualizando.Text = "";
+                        mtlblAtualizando.Text = "Os dados baixados/atualizados da API foram exibidos com sucesso!";
 
-                            if (!Directory.Exists(strDiretorio))
-                            {
-                                Directory.CreateDirectory(strDiretorio);
-                            }
-
-                            string strArquivoJSON = Path.GetDirectoryName(strDiretorio) + "\\Dados Mundiais\\" + "DadosMundiais_" + DateTime.Today.ToString("dd-MM-yy") + ".json";
-
-                            if (!File.Exists(strArquivoJSON))
-                            {
-                                File.Create(strArquivoJSON).Dispose();
-                            }
-
-                            using (StreamWriter swEscreverJSON = File.AppendText(strArquivoJSON))
-                            {
-                                swEscreverJSON.WriteLine(strJSON);
-                                swEscreverJSON.Close();
-                            }
-                        }
-
-                        try
-                        {
-                            mtlblAtualizando.Text = "Recuperando informações...";
-
-                            DadosGerais novoDadosGerais = new DadosGerais();
-                            novoDadosGerais = JsonConvert.DeserializeObject<DadosGerais>(strTexto);
-
-                            mtlblCasosMundiais.Text = novoDadosGerais.Cases.ToString() + " Casos Confirmados";
-                            mtlblMortesMundiais.Text = novoDadosGerais.Deaths.ToString() + " Mortes Confirmadas";
-                            mtlblRecuperados.Text = novoDadosGerais.Recovered.ToString() + " Casos Revertidos";
-
-                            mtlblAtualizando.Text = "Os dados baixados/atualizados foram exibidos com sucesso!";
-
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.ToString());
-                        }
                     }
-            }
+                    else
+                    {
+                        mtlblAtualizando.Text = "";
+                        mtlblAtualizando.Text = "O arquivo JSON com os dados baixados da API foram salvos com sucesso!";
+
+                        mtlblAtualizando.Text = "";
+                        mtlblAtualizando.Text = "Recuperando e preenchendo as informações... por favor, aguarde.";
+
+                        DadosGerais novoDadosGerais = new DadosGerais();
+                        novoDadosGerais = JsonConvert.DeserializeObject<DadosGerais>(strDadosAPI);
+
+                        mtlblCasosMundiais.Text = novoDadosGerais.Cases.ToString() + " Casos Confirmados";
+                        mtlblMortesMundiais.Text = novoDadosGerais.Deaths.ToString() + " Mortes Confirmadas";
+                        mtlblRecuperados.Text = novoDadosGerais.Recovered.ToString() + " Casos Revertidos";
+
+                        mtlblAtualizando.Text = "";
+                        mtlblAtualizando.Text = "Os dados baixados/atualizados da API foram exibidos com sucesso!";
+                    }
+                }
                 else
                 {
                     mtlblAtualizando.Text = "";
-                    mtlblAtualizando.Text = "Não foi possível obter os dados agora. Tente novamente mais tarde!";
-                    MessageBox.Show("Os dados não puderam ser atualizados. Provavelmente, o servidor da API deve estar em manutenção ou então, atualizando as informações. \nPor favor, tente novamente mais tarde.", "Confirmação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    mtlblAtualizando.Visible = false;
+                    return;
                 }
-
+                #endregion Fim - Busca de Dados da API
+            }
+            else
+            {
+                mtlblAtualizando.Text = "";
+                mtlblAtualizando.Visible = false;
+                MessageBox.Show("Nenhum dado foi obtido/atualizado. Por favor, tente novamente.", "Confirmação", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
         }
 
-        private void mtAtualizarDados_Click(object sender, EventArgs e)
+        private string BaixarDadosMundiaisAPI()
         {
-
-            string strLink = "https://coronavirus-19-api.herokuapp.com/countries";
-            Uri novoUrl = new Uri(strLink);
-
-            HttpWebRequest requisicaoHTTP = WebRequest.Create(novoUrl) as HttpWebRequest;
-            requisicaoHTTP.Method = "GET";
-            requisicaoHTTP.ContentType = "application/json";
-
-            mtlblTabela.Text = "";
-
-            using (HttpWebResponse respostaHTTP = requisicaoHTTP.GetResponse() as HttpWebResponse)
+            try
             {
-                mtlblTabela.Text = "Atualizando os dados da tabela...";
+                string strLink = "https://coronavirus-19-api.herokuapp.com/all";
+                string strRetornoAPI;
 
-                StreamReader novoLeitorStream = new StreamReader(respostaHTTP.GetResponseStream());
-                string strTexto = novoLeitorStream.ReadToEnd();
+                Uri novoUrl = new Uri(strLink);
 
-                if(!string.IsNullOrEmpty(strTexto))
+                HttpWebRequest requisicaoHTTP = WebRequest.Create(novoUrl) as HttpWebRequest;
+                requisicaoHTTP.Method = "GET";
+                requisicaoHTTP.ContentType = "application/json";
+
+                mtlblAtualizando.Text = "Os dados estão sendo atualizados, por favor aguarde...";
+
+                using (HttpWebResponse respostaHTTP = requisicaoHTTP.GetResponse() as HttpWebResponse)
+                {
+                    StreamReader novoLeitorStream = new StreamReader(respostaHTTP.GetResponseStream());
+                    strRetornoAPI = novoLeitorStream.ReadToEnd();
+
+                    return strRetornoAPI;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Não foi possível obter os dados da API nesse momento. Possivelmente, estão atualizando os dados, caso contrário, verifique sua conexão com a internet.\n\nVerifque ou aguarde um momento e tente novamente.", "Confirmação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            return "";
+        }
+
+        private bool SalvarDadosAPIMundial(string strDados)
+        {
+            string strJSON = strDados;
+
+            //Criando o JSON
+            string strJSONAux = JsonConvert.SerializeObject(strJSON, Formatting.Indented);
+
+            //Criando e salvando no diretório
+            string strDir = @"C:\COVID-19Net\Dados\JSON\Dados Mundiais";
+
+            if (!Directory.Exists(strDir))
+            {
+                Directory.CreateDirectory(strDir);
+            }
+
+            //Criação do arquivo JSON_DadosMundiais_DiaMesAno.json
+            string strArquivoJSON = Path.GetDirectoryName(strDir) + "\\Dados Mundiais\\" + "JSON_DadosMundiais_" + DateTime.Today.ToString("dd-MM-yyyy") + ".json";
+
+            if (!File.Exists(strArquivoJSON))
+            {
+                File.Create(strArquivoJSON).Dispose();
+            }
+
+            using (StreamWriter swEscreverJSON = File.AppendText(strArquivoJSON))
+            {
+                swEscreverJSON.WriteLine(strJSONAux);
+                swEscreverJSON.Close();
+            }
+
+            MessageBox.Show("O arquivo foi salvo com sucesso. Ele se encontra na pasta: " + strDir.ToString() + ".", "Confirmação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return true;
+        }
+
+        private void mtAtualizarDadosTabela_Click(object sender, EventArgs e)
+        {
+            DialogResult drResultado = MessageBox.Show("Deseja obter os dados mais atualizados do COVID-19 de todos os países, e preencher a tabela com essas informações?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if(drResultado == DialogResult.Yes)
+            {
+                mtlblTabela.Text = "";
+
+                string strDadosAPI;
+
+                mtlblTabela.Text = "Os dados estão sendo atualizados, por favor aguarde um momento...";
+                strDadosAPI = BaixarDadosPaisesAPI();
+
+                #region Baixar Dados da API
+                if (!string.IsNullOrEmpty(strDadosAPI))
                 {
                     mtlblTabela.Text = "";
+                    mtlblTabela.Text = "Os dados baixados/atualizados da API foram exibidos com sucesso!";
 
-                    mtrgrdDataGrid.DataSource = JsonConvert.DeserializeObject<List<ClassePaises>>(strTexto);
+                    DialogResult drSalvarResultado = MessageBox.Show("Deseja salvar o conteúdo baixado da API no seu computador?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                    mtlblTabela.Text = "Pronto! Os dados foram atualizados.";
-                    //var listaJSON = JsonConvert.DeserializeObject<List<ClassePaises>>(strTexto);
+                    if(drSalvarResultado == DialogResult.Yes)
+                    {
+                        SalvarDadosAPIPaises(strDadosAPI);
+                        
+                        mtlblTabela.Text = "";
+
+                        //Preenchendo o GRID com os dados do JSON vindo do Array
+                        mtrgrdDataGrid.DataSource = JsonConvert.DeserializeObject<List<ClassePaises>>(strDadosAPI);
+                        mtlblTabela.Text = "Pronto! Os dados foram atualizados de acordo com a API e preenchidos na Tabela.";
+                    }
+                    else
+                    {
+                        mtlblTabela.Text = "";
+                        
+                        //Preenchendo o GRID com os dados do JSON vindo do Array
+                        mtrgrdDataGrid.DataSource = JsonConvert.DeserializeObject<List<ClassePaises>>(strDadosAPI);
+                        mtlblTabela.Text = "Pronto! Os dados foram atualizados de acordo com a API e preenchidos na Tabela.";
+                    }
                 }
                 else
                 {
                     mtlblTabela.Text = "";
-                    mtlblTabela.Text = "Não foi possível obter os dados agora. Tente novamente mais tarde!";
-                    MessageBox.Show("Os dados não puderam ser atualizados. Provavelmente, o servidor da API deve estar em manutenção ou então, atualizando as informações. \nPor favor, tente novamente mais tarde.", "Confirmação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    mtlblTabela.Text = "Por favor, para visualizar os dados, clique em 'Atualizar Tabela'.";
+                    return;
+                }
+                #endregion Fim - Baixar Dados da API
+
+            }
+            else
+            {
+                mtlblAtualizando.Text = "";
+                mtlblTabela.Text = "Por favor, para visualizar os dados, clique em 'Atualizar Tabela'.";
+                MessageBox.Show("Nenhum dado foi obtido/atualizado. Por favor, tente novamente.", "Confirmação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private string BaixarDadosPaisesAPI()
+        {
+            try
+            {
+                string strLink = "https://coronavirus-19-api.herokuapp.com/countries";
+                string strRetornoAPI;
+
+                Uri novoUrl = new Uri(strLink);
+
+                HttpWebRequest requisicaoHTTP = WebRequest.Create(novoUrl) as HttpWebRequest;
+                requisicaoHTTP.Method = "GET";
+                requisicaoHTTP.ContentType = "application/json";
+
+                using (HttpWebResponse respostaHTTP = requisicaoHTTP.GetResponse() as HttpWebResponse)
+                {
+                    StreamReader novoLeitorStream = new StreamReader(respostaHTTP.GetResponseStream());
+                    strRetornoAPI = novoLeitorStream.ReadToEnd();
+
+                    return strRetornoAPI;
                 }
             }
+            catch
+            {
+                MessageBox.Show("Não foi possível obter os dados da API nesse momento. Possivelmente, estão atualizando os dados, caso contrário, verifique sua conexão com a internet.\n\nVerifque ou aguarde um momento e tente novamente.", "Confirmação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            return "";
+        }
+        private bool SalvarDadosAPIPaises(string strDados)
+        {
+            string strJSON = strDados;
+
+            //Criando o JSON
+            string strJSONAux = JsonConvert.SerializeObject(strJSON, Formatting.Indented);
+
+            //Criando e salvando no diretório
+            string strDir = @"C:\COVID-19Net\Dados\JSON\Dados Paises";
+
+            if (!Directory.Exists(strDir))
+            {
+                Directory.CreateDirectory(strDir);
+            }
+
+            //Criação do arquivo JSON_DadosMundiais_DiaMesAno.json
+            string strArquivoJSON = Path.GetDirectoryName(strDir) + "\\Dados Paises\\" + "JSON_DadosPaises_" + DateTime.Today.ToString("dd-MM-yyyy") + ".json";
+
+            if (!File.Exists(strArquivoJSON))
+            {
+                File.Create(strArquivoJSON).Dispose();
+            }
+
+            using (StreamWriter swEscreverJSON = File.AppendText(strArquivoJSON))
+            {
+                swEscreverJSON.WriteLine(strJSONAux);
+                swEscreverJSON.Close();
+            }
+
+            MessageBox.Show("O arquivo foi salvo com sucesso. Ele se encontra na pasta: " + strDir.ToString() + ".", "Confirmação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return true;
+        }
+
+        private void mtbExportarCSV_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Esta funcionalidade está em desenvolvimento. Caso seja necessário, por favor, entre em contato através do GitHub ou das minhas redes sociais.", "Confirmação", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

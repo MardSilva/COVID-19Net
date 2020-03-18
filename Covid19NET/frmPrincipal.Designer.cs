@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.mTabAbas = new MetroFramework.Controls.MetroTabControl();
             this.mtInicio = new MetroFramework.Controls.MetroTabPage();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
@@ -52,10 +52,11 @@
             this.mtPaises = new MetroFramework.Controls.MetroTabPage();
             this.mtrgrdDataGrid = new MetroFramework.Controls.MetroGrid();
             this.mtlblTabela = new MetroFramework.Controls.MetroLabel();
-            this.mtAtualizarDados = new MetroFramework.Controls.MetroButton();
+            this.mtbExportarCSV = new MetroFramework.Controls.MetroButton();
+            this.mtAtualizarDadosTabela = new MetroFramework.Controls.MetroButton();
             this.mtOpcoes = new MetroFramework.Controls.MetroTabPage();
             this.mtLinkEymardGithub = new MetroFramework.Controls.MetroLink();
-            this.metroLink1 = new MetroFramework.Controls.MetroLink();
+            this.mtLinkSite = new MetroFramework.Controls.MetroLink();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
@@ -73,6 +74,22 @@
             this.mtbPais = new MetroFramework.Controls.MetroButton();
             this.mtbConfigGerais = new MetroFramework.Controls.MetroButton();
             this.mtlSobre = new MetroFramework.Controls.MetroLink();
+            this.metroLink2 = new MetroFramework.Controls.MetroLink();
+            this.mtbVersao = new MetroFramework.Controls.MetroButton();
+            this.mtChangelog = new MetroFramework.Controls.MetroTabPage();
+            this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel16 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel18 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel19 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel20 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel21 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel22 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel23 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel24 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel25 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel26 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel27 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel28 = new MetroFramework.Controls.MetroLabel();
             this.mTabAbas.SuspendLayout();
             this.mtInicio.SuspendLayout();
             this.mtMundial.SuspendLayout();
@@ -80,6 +97,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.mtrgrdDataGrid)).BeginInit();
             this.mtOpcoes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mtsmGerenciadordeEstilo)).BeginInit();
+            this.mtChangelog.SuspendLayout();
             this.SuspendLayout();
             // 
             // mTabAbas
@@ -89,10 +107,11 @@
             this.mTabAbas.Controls.Add(this.mtMundial);
             this.mTabAbas.Controls.Add(this.mtPaises);
             this.mTabAbas.Controls.Add(this.mtOpcoes);
+            this.mTabAbas.Controls.Add(this.mtChangelog);
             this.mTabAbas.FontSize = MetroFramework.MetroTabControlSize.Tall;
             this.mTabAbas.Location = new System.Drawing.Point(39, 81);
             this.mTabAbas.Name = "mTabAbas";
-            this.mTabAbas.SelectedIndex = 2;
+            this.mTabAbas.SelectedIndex = 4;
             this.mTabAbas.Size = new System.Drawing.Size(1132, 540);
             this.mTabAbas.TabIndex = 0;
             this.mTabAbas.TextAlign = System.Drawing.ContentAlignment.TopLeft;
@@ -168,7 +187,7 @@
             this.mtMundial.Name = "mtMundial";
             this.mtMundial.Size = new System.Drawing.Size(1124, 489);
             this.mtMundial.TabIndex = 1;
-            this.mtMundial.Text = "Informações - Mundiais";
+            this.mtMundial.Text = "Casos Mundiais";
             this.mtMundial.VerticalScrollbarBarColor = true;
             this.mtMundial.VerticalScrollbarHighlightOnWheel = false;
             this.mtMundial.VerticalScrollbarSize = 10;
@@ -178,11 +197,11 @@
             this.mtlblAtualizando.AutoSize = true;
             this.mtlblAtualizando.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.mtlblAtualizando.ForeColor = System.Drawing.SystemColors.Control;
-            this.mtlblAtualizando.Location = new System.Drawing.Point(412, 437);
+            this.mtlblAtualizando.Location = new System.Drawing.Point(393, 435);
             this.mtlblAtualizando.Name = "mtlblAtualizando";
-            this.mtlblAtualizando.Size = new System.Drawing.Size(343, 19);
+            this.mtlblAtualizando.Size = new System.Drawing.Size(431, 19);
             this.mtlblAtualizando.TabIndex = 7;
-            this.mtlblAtualizando.Text = "Os dados estão sendo atualizados, por favor aguarde...";
+            this.mtlblAtualizando.Text = "Os dados estão sendo atualizados, por favor aguarde um momento...";
             // 
             // mtlblRecuperados
             // 
@@ -281,7 +300,8 @@
             // 
             this.mtPaises.Controls.Add(this.mtrgrdDataGrid);
             this.mtPaises.Controls.Add(this.mtlblTabela);
-            this.mtPaises.Controls.Add(this.mtAtualizarDados);
+            this.mtPaises.Controls.Add(this.mtbExportarCSV);
+            this.mtPaises.Controls.Add(this.mtAtualizarDadosTabela);
             this.mtPaises.HorizontalScrollbarBarColor = true;
             this.mtPaises.HorizontalScrollbarHighlightOnWheel = false;
             this.mtPaises.HorizontalScrollbarSize = 10;
@@ -289,7 +309,7 @@
             this.mtPaises.Name = "mtPaises";
             this.mtPaises.Size = new System.Drawing.Size(1124, 489);
             this.mtPaises.TabIndex = 3;
-            this.mtPaises.Text = "Informações (Por Países)";
+            this.mtPaises.Text = "Casos Por País";
             this.mtPaises.VerticalScrollbarBarColor = true;
             this.mtPaises.VerticalScrollbarHighlightOnWheel = false;
             this.mtPaises.VerticalScrollbarSize = 10;
@@ -298,6 +318,7 @@
             // 
             this.mtrgrdDataGrid.AllowUserToAddRows = false;
             this.mtrgrdDataGrid.AllowUserToDeleteRows = false;
+            this.mtrgrdDataGrid.AllowUserToOrderColumns = true;
             this.mtrgrdDataGrid.AllowUserToResizeColumns = false;
             this.mtrgrdDataGrid.AllowUserToResizeRows = false;
             this.mtrgrdDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -306,39 +327,41 @@
             this.mtrgrdDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.mtrgrdDataGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.mtrgrdDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.mtrgrdDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.mtrgrdDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.mtrgrdDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.mtrgrdDataGrid.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.mtrgrdDataGrid.DefaultCellStyle = dataGridViewCellStyle5;
+            this.mtrgrdDataGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.mtrgrdDataGrid.EnableHeadersVisualStyles = false;
             this.mtrgrdDataGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.mtrgrdDataGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.mtrgrdDataGrid.Location = new System.Drawing.Point(3, 3);
             this.mtrgrdDataGrid.Name = "mtrgrdDataGrid";
             this.mtrgrdDataGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.mtrgrdDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.mtrgrdDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.mtrgrdDataGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.mtrgrdDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.mtrgrdDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.mtrgrdDataGrid.ShowEditingIcon = false;
             this.mtrgrdDataGrid.Size = new System.Drawing.Size(1118, 449);
             this.mtrgrdDataGrid.TabIndex = 3;
             // 
@@ -347,25 +370,37 @@
             this.mtlblTabela.AutoSize = true;
             this.mtlblTabela.Location = new System.Drawing.Point(3, 458);
             this.mtlblTabela.Name = "mtlblTabela";
-            this.mtlblTabela.Size = new System.Drawing.Size(317, 19);
+            this.mtlblTabela.Size = new System.Drawing.Size(377, 19);
             this.mtlblTabela.TabIndex = 4;
-            this.mtlblTabela.Text = "Para visualizar os dados, clique em \'Atualizar Tabela\'.";
+            this.mtlblTabela.Text = "Por favor, para visualizar os dados, clique em \'Atualizar Tabela\'.";
             // 
-            // mtAtualizarDados
+            // mtbExportarCSV
             // 
-            this.mtAtualizarDados.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.mtAtualizarDados.Location = new System.Drawing.Point(980, 458);
-            this.mtAtualizarDados.Name = "mtAtualizarDados";
-            this.mtAtualizarDados.Size = new System.Drawing.Size(141, 30);
-            this.mtAtualizarDados.TabIndex = 3;
-            this.mtAtualizarDados.Text = "Atualizar Tabela";
-            this.mtAtualizarDados.UseSelectable = true;
-            this.mtAtualizarDados.Click += new System.EventHandler(this.mtAtualizarDados_Click);
+            this.mtbExportarCSV.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.mtbExportarCSV.Location = new System.Drawing.Point(980, 458);
+            this.mtbExportarCSV.Name = "mtbExportarCSV";
+            this.mtbExportarCSV.Size = new System.Drawing.Size(141, 30);
+            this.mtbExportarCSV.TabIndex = 3;
+            this.mtbExportarCSV.Text = "Exportar para CSV";
+            this.mtbExportarCSV.UseSelectable = true;
+            this.mtbExportarCSV.Click += new System.EventHandler(this.mtbExportarCSV_Click);
+            // 
+            // mtAtualizarDadosTabela
+            // 
+            this.mtAtualizarDadosTabela.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.mtAtualizarDadosTabela.Location = new System.Drawing.Point(828, 459);
+            this.mtAtualizarDadosTabela.Name = "mtAtualizarDadosTabela";
+            this.mtAtualizarDadosTabela.Size = new System.Drawing.Size(141, 30);
+            this.mtAtualizarDadosTabela.TabIndex = 3;
+            this.mtAtualizarDadosTabela.Text = "Atualizar Tabela";
+            this.mtAtualizarDadosTabela.UseSelectable = true;
+            this.mtAtualizarDadosTabela.Click += new System.EventHandler(this.mtAtualizarDadosTabela_Click);
             // 
             // mtOpcoes
             // 
+            this.mtOpcoes.Controls.Add(this.metroLink2);
             this.mtOpcoes.Controls.Add(this.mtLinkEymardGithub);
-            this.mtOpcoes.Controls.Add(this.metroLink1);
+            this.mtOpcoes.Controls.Add(this.mtLinkSite);
             this.mtOpcoes.Controls.Add(this.metroLabel7);
             this.mtOpcoes.Controls.Add(this.metroLabel6);
             this.mtOpcoes.Controls.Add(this.metroLabel5);
@@ -392,41 +427,41 @@
             // mtLinkEymardGithub
             // 
             this.mtLinkEymardGithub.FontSize = MetroFramework.MetroLinkSize.Tall;
-            this.mtLinkEymardGithub.Location = new System.Drawing.Point(382, 317);
+            this.mtLinkEymardGithub.Location = new System.Drawing.Point(382, 301);
             this.mtLinkEymardGithub.Name = "mtLinkEymardGithub";
-            this.mtLinkEymardGithub.Size = new System.Drawing.Size(377, 33);
+            this.mtLinkEymardGithub.Size = new System.Drawing.Size(377, 34);
             this.mtLinkEymardGithub.TabIndex = 11;
             this.mtLinkEymardGithub.Text = "Visitar meu Github";
             this.mtLinkEymardGithub.UseSelectable = true;
             this.mtLinkEymardGithub.Click += new System.EventHandler(this.mtLinkEymardGithub_Click);
             // 
-            // metroLink1
+            // mtLinkSite
             // 
-            this.metroLink1.FontSize = MetroFramework.MetroLinkSize.Tall;
-            this.metroLink1.Location = new System.Drawing.Point(382, 392);
-            this.metroLink1.Name = "metroLink1";
-            this.metroLink1.Size = new System.Drawing.Size(377, 33);
-            this.metroLink1.TabIndex = 11;
-            this.metroLink1.Text = "Visitar Github da API";
-            this.metroLink1.UseSelectable = true;
-            this.metroLink1.Click += new System.EventHandler(this.metroLink1_Click);
+            this.mtLinkSite.FontSize = MetroFramework.MetroLinkSize.Tall;
+            this.mtLinkSite.Location = new System.Drawing.Point(382, 415);
+            this.mtLinkSite.Name = "mtLinkSite";
+            this.mtLinkSite.Size = new System.Drawing.Size(377, 33);
+            this.mtLinkSite.TabIndex = 11;
+            this.mtLinkSite.Text = "Acessar Site";
+            this.mtLinkSite.UseSelectable = true;
+            this.mtLinkSite.Click += new System.EventHandler(this.mtLinkSite_Click);
             // 
             // metroLabel7
             // 
             this.metroLabel7.AutoSize = true;
             this.metroLabel7.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel7.Location = new System.Drawing.Point(118, 365);
+            this.metroLabel7.Location = new System.Drawing.Point(166, 392);
             this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(877, 25);
+            this.metroLabel7.Size = new System.Drawing.Size(803, 25);
             this.metroLabel7.TabIndex = 10;
-            this.metroLabel7.Text = "Este aplicativo consome dados de uma API através de endpoints. E a mesma pode ser" +
-    " encontrada neste endereço:";
+            this.metroLabel7.Text = "Este aplicativo consome dados de uma API através de endpoints. E a fonte desses d" +
+    "ados estão neste site:";
             // 
             // metroLabel6
             // 
             this.metroLabel6.AutoSize = true;
             this.metroLabel6.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel6.Location = new System.Drawing.Point(438, 291);
+            this.metroLabel6.Location = new System.Drawing.Point(453, 265);
             this.metroLabel6.Name = "metroLabel6";
             this.metroLabel6.Size = new System.Drawing.Size(250, 25);
             this.metroLabel6.TabIndex = 10;
@@ -438,9 +473,9 @@
             this.metroLabel5.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel5.Location = new System.Drawing.Point(410, 239);
             this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(321, 25);
+            this.metroLabel5.Size = new System.Drawing.Size(356, 25);
             this.metroLabel5.TabIndex = 9;
-            this.metroLabel5.Text = "Sobre o COVID-19 - Informações Globais";
+            this.metroLabel5.Text = "Sobre o COVID-19.NET - Informações Globais";
             // 
             // mtcbCores
             // 
@@ -546,18 +581,18 @@
             // mtbGerais
             // 
             this.mtbGerais.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.mtbGerais.Location = new System.Drawing.Point(736, 652);
+            this.mtbGerais.Location = new System.Drawing.Point(568, 652);
             this.mtbGerais.Name = "mtbGerais";
             this.mtbGerais.Size = new System.Drawing.Size(135, 37);
             this.mtbGerais.TabIndex = 1;
-            this.mtbGerais.Text = "Informações Gerais";
+            this.mtbGerais.Text = "Casos Mundiais";
             this.mtbGerais.UseSelectable = true;
             this.mtbGerais.Click += new System.EventHandler(this.mtbGerais_Click);
             // 
             // mtbInicio
             // 
             this.mtbInicio.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.mtbInicio.Location = new System.Drawing.Point(581, 652);
+            this.mtbInicio.Location = new System.Drawing.Point(413, 652);
             this.mtbInicio.Name = "mtbInicio";
             this.mtbInicio.Size = new System.Drawing.Size(135, 37);
             this.mtbInicio.TabIndex = 1;
@@ -572,18 +607,18 @@
             // mtbPais
             // 
             this.mtbPais.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.mtbPais.Location = new System.Drawing.Point(891, 652);
+            this.mtbPais.Location = new System.Drawing.Point(723, 652);
             this.mtbPais.Name = "mtbPais";
             this.mtbPais.Size = new System.Drawing.Size(135, 37);
             this.mtbPais.TabIndex = 1;
-            this.mtbPais.Text = "Por País";
+            this.mtbPais.Text = "Casos Por País";
             this.mtbPais.UseSelectable = true;
             this.mtbPais.Click += new System.EventHandler(this.mtbPais_Click);
             // 
             // mtbConfigGerais
             // 
             this.mtbConfigGerais.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.mtbConfigGerais.Location = new System.Drawing.Point(1045, 652);
+            this.mtbConfigGerais.Location = new System.Drawing.Point(877, 652);
             this.mtbConfigGerais.Name = "mtbConfigGerais";
             this.mtbConfigGerais.Size = new System.Drawing.Size(135, 37);
             this.mtbConfigGerais.TabIndex = 1;
@@ -596,11 +631,198 @@
             this.mtlSobre.FontSize = MetroFramework.MetroLinkSize.Medium;
             this.mtlSobre.Location = new System.Drawing.Point(39, 652);
             this.mtlSobre.Name = "mtlSobre";
-            this.mtlSobre.Size = new System.Drawing.Size(536, 37);
+            this.mtlSobre.Size = new System.Drawing.Size(350, 37);
             this.mtlSobre.TabIndex = 2;
             this.mtlSobre.Text = "Criador por Eymard Silva | www.esware.com.br";
             this.mtlSobre.UseSelectable = true;
             this.mtlSobre.Click += new System.EventHandler(this.mtlSobre_Click);
+            // 
+            // metroLink2
+            // 
+            this.metroLink2.FontSize = MetroFramework.MetroLinkSize.Tall;
+            this.metroLink2.Location = new System.Drawing.Point(382, 327);
+            this.metroLink2.Name = "metroLink2";
+            this.metroLink2.Size = new System.Drawing.Size(377, 34);
+            this.metroLink2.TabIndex = 11;
+            this.metroLink2.Text = "Visitar Repositório da Aplicação";
+            this.metroLink2.UseSelectable = true;
+            this.metroLink2.Click += new System.EventHandler(this.mtLinkEymardGithub_Click);
+            // 
+            // mtbVersao
+            // 
+            this.mtbVersao.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.mtbVersao.Location = new System.Drawing.Point(1032, 652);
+            this.mtbVersao.Name = "mtbVersao";
+            this.mtbVersao.Size = new System.Drawing.Size(135, 37);
+            this.mtbVersao.TabIndex = 1;
+            this.mtbVersao.Text = "Sobre a Versão";
+            this.mtbVersao.UseSelectable = true;
+            this.mtbVersao.Click += new System.EventHandler(this.mtbVersao_Click);
+            // 
+            // mtChangelog
+            // 
+            this.mtChangelog.Controls.Add(this.metroLabel28);
+            this.mtChangelog.Controls.Add(this.metroLabel25);
+            this.mtChangelog.Controls.Add(this.metroLabel26);
+            this.mtChangelog.Controls.Add(this.metroLabel27);
+            this.mtChangelog.Controls.Add(this.metroLabel24);
+            this.mtChangelog.Controls.Add(this.metroLabel23);
+            this.mtChangelog.Controls.Add(this.metroLabel22);
+            this.mtChangelog.Controls.Add(this.metroLabel21);
+            this.mtChangelog.Controls.Add(this.metroLabel20);
+            this.mtChangelog.Controls.Add(this.metroLabel18);
+            this.mtChangelog.Controls.Add(this.metroLabel14);
+            this.mtChangelog.Controls.Add(this.metroLabel19);
+            this.mtChangelog.Controls.Add(this.metroLabel16);
+            this.mtChangelog.HorizontalScrollbarBarColor = true;
+            this.mtChangelog.HorizontalScrollbarHighlightOnWheel = false;
+            this.mtChangelog.HorizontalScrollbarSize = 10;
+            this.mtChangelog.Location = new System.Drawing.Point(4, 47);
+            this.mtChangelog.Name = "mtChangelog";
+            this.mtChangelog.Size = new System.Drawing.Size(1124, 489);
+            this.mtChangelog.TabIndex = 4;
+            this.mtChangelog.Text = "Changelog";
+            this.mtChangelog.VerticalScrollbarBarColor = true;
+            this.mtChangelog.VerticalScrollbarHighlightOnWheel = false;
+            this.mtChangelog.VerticalScrollbarSize = 10;
+            // 
+            // metroLabel14
+            // 
+            this.metroLabel14.AutoSize = true;
+            this.metroLabel14.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel14.Location = new System.Drawing.Point(370, 53);
+            this.metroLabel14.Name = "metroLabel14";
+            this.metroLabel14.Size = new System.Drawing.Size(378, 25);
+            this.metroLabel14.TabIndex = 5;
+            this.metroLabel14.Text = "Olá, bem-vindo ao Changelog do COVID-19Net.";
+            // 
+            // metroLabel16
+            // 
+            this.metroLabel16.AutoSize = true;
+            this.metroLabel16.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel16.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel16.Location = new System.Drawing.Point(462, 12);
+            this.metroLabel16.Name = "metroLabel16";
+            this.metroLabel16.Size = new System.Drawing.Size(198, 25);
+            this.metroLabel16.TabIndex = 4;
+            this.metroLabel16.Text = "O que é o Changelog?";
+            // 
+            // metroLabel18
+            // 
+            this.metroLabel18.AutoSize = true;
+            this.metroLabel18.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel18.Location = new System.Drawing.Point(68, 78);
+            this.metroLabel18.Name = "metroLabel18";
+            this.metroLabel18.Size = new System.Drawing.Size(997, 50);
+            this.metroLabel18.TabIndex = 5;
+            this.metroLabel18.Text = resources.GetString("metroLabel18.Text");
+            this.metroLabel18.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // metroLabel19
+            // 
+            this.metroLabel19.AutoSize = true;
+            this.metroLabel19.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel19.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel19.Location = new System.Drawing.Point(399, 151);
+            this.metroLabel19.Name = "metroLabel19";
+            this.metroLabel19.Size = new System.Drawing.Size(316, 25);
+            this.metroLabel19.TabIndex = 4;
+            this.metroLabel19.Text = "Histórico de Versões - COVID-19Net";
+            // 
+            // metroLabel20
+            // 
+            this.metroLabel20.AutoSize = true;
+            this.metroLabel20.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel20.Location = new System.Drawing.Point(502, 185);
+            this.metroLabel20.Name = "metroLabel20";
+            this.metroLabel20.Size = new System.Drawing.Size(113, 25);
+            this.metroLabel20.TabIndex = 6;
+            this.metroLabel20.Text = "Versão 1.0.0.X";
+            // 
+            // metroLabel21
+            // 
+            this.metroLabel21.AutoSize = true;
+            this.metroLabel21.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel21.Location = new System.Drawing.Point(268, 210);
+            this.metroLabel21.Name = "metroLabel21";
+            this.metroLabel21.Size = new System.Drawing.Size(592, 25);
+            this.metroLabel21.TabIndex = 7;
+            this.metroLabel21.Text = "- Adição das APIs, e criação dos arquivos para serem salvos na pasta (JSON).";
+            // 
+            // metroLabel22
+            // 
+            this.metroLabel22.AutoSize = true;
+            this.metroLabel22.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel22.Location = new System.Drawing.Point(268, 235);
+            this.metroLabel22.Name = "metroLabel22";
+            this.metroLabel22.Size = new System.Drawing.Size(571, 25);
+            this.metroLabel22.TabIndex = 7;
+            this.metroLabel22.Text = "- Criação de um Instalador Simplificado através do Visual Studio (Publish);";
+            this.metroLabel22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // metroLabel23
+            // 
+            this.metroLabel23.AutoSize = true;
+            this.metroLabel23.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel23.Location = new System.Drawing.Point(425, 260);
+            this.metroLabel23.Name = "metroLabel23";
+            this.metroLabel23.Size = new System.Drawing.Size(265, 25);
+            this.metroLabel23.TabIndex = 7;
+            this.metroLabel23.Text = "- Publicação do Fonte no GitHub;";
+            this.metroLabel23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // metroLabel24
+            // 
+            this.metroLabel24.AutoSize = true;
+            this.metroLabel24.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel24.Location = new System.Drawing.Point(502, 294);
+            this.metroLabel24.Name = "metroLabel24";
+            this.metroLabel24.Size = new System.Drawing.Size(116, 25);
+            this.metroLabel24.TabIndex = 8;
+            this.metroLabel24.Text = "Versão 2.0.0.X";
+            // 
+            // metroLabel25
+            // 
+            this.metroLabel25.AutoSize = true;
+            this.metroLabel25.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel25.Location = new System.Drawing.Point(358, 373);
+            this.metroLabel25.Name = "metroLabel25";
+            this.metroLabel25.Size = new System.Drawing.Size(419, 25);
+            this.metroLabel25.TabIndex = 9;
+            this.metroLabel25.Text = "- Correções de melhorias e establidades da aplicação;";
+            this.metroLabel25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // metroLabel26
+            // 
+            this.metroLabel26.AutoSize = true;
+            this.metroLabel26.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel26.Location = new System.Drawing.Point(399, 348);
+            this.metroLabel26.Name = "metroLabel26";
+            this.metroLabel26.Size = new System.Drawing.Size(318, 25);
+            this.metroLabel26.TabIndex = 10;
+            this.metroLabel26.Text = "- Criação do novo instalador do sistema;";
+            this.metroLabel26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // metroLabel27
+            // 
+            this.metroLabel27.AutoSize = true;
+            this.metroLabel27.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel27.Location = new System.Drawing.Point(399, 323);
+            this.metroLabel27.Name = "metroLabel27";
+            this.metroLabel27.Size = new System.Drawing.Size(337, 25);
+            this.metroLabel27.TabIndex = 11;
+            this.metroLabel27.Text = "- Refatoração de código e métodos (geral);";
+            // 
+            // metroLabel28
+            // 
+            this.metroLabel28.AutoSize = true;
+            this.metroLabel28.Location = new System.Drawing.Point(132, 466);
+            this.metroLabel28.Name = "metroLabel28";
+            this.metroLabel28.Size = new System.Drawing.Size(859, 19);
+            this.metroLabel28.TabIndex = 12;
+            this.metroLabel28.Text = "Agradecimentos: Eduardo Jorge Moreira (pelas issues abertas), Cheila Xavier (Dica" +
+    "s gerais de melhorias) e todos que estão usando a ferramenta!";
+            this.metroLabel28.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // frmPrincipal
             // 
@@ -609,6 +831,7 @@
             this.ClientSize = new System.Drawing.Size(1206, 709);
             this.Controls.Add(this.mtlSobre);
             this.Controls.Add(this.mtbInicio);
+            this.Controls.Add(this.mtbVersao);
             this.Controls.Add(this.mtbConfigGerais);
             this.Controls.Add(this.mtbPais);
             this.Controls.Add(this.mtbGerais);
@@ -633,6 +856,8 @@
             this.mtOpcoes.ResumeLayout(false);
             this.mtOpcoes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mtsmGerenciadordeEstilo)).EndInit();
+            this.mtChangelog.ResumeLayout(false);
+            this.mtChangelog.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -656,7 +881,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroLabel metroLabel7;
-        private MetroFramework.Controls.MetroLink metroLink1;
+        private MetroFramework.Controls.MetroLink mtLinkSite;
         private MetroFramework.Components.MetroStyleManager mtsmGerenciadordeEstilo;
         private MetroFramework.Controls.MetroTabPage mtPaises;
         private MetroFramework.Controls.MetroLabel metroLabel9;
@@ -676,9 +901,26 @@
         private MetroFramework.Controls.MetroLabel metroLabel13;
         private MetroFramework.Controls.MetroLink mtlSobre;
         private MetroFramework.Controls.MetroLabel mtlblAtualizando;
-        private MetroFramework.Controls.MetroButton mtAtualizarDados;
+        private MetroFramework.Controls.MetroButton mtAtualizarDadosTabela;
         private MetroFramework.Controls.MetroLabel mtlblTabela;
         private MetroFramework.Controls.MetroGrid mtrgrdDataGrid;
+        private MetroFramework.Controls.MetroButton mtbExportarCSV;
+        private MetroFramework.Controls.MetroLink metroLink2;
+        private MetroFramework.Controls.MetroTabPage mtChangelog;
+        private MetroFramework.Controls.MetroButton mtbVersao;
+        private MetroFramework.Controls.MetroLabel metroLabel18;
+        private MetroFramework.Controls.MetroLabel metroLabel14;
+        private MetroFramework.Controls.MetroLabel metroLabel19;
+        private MetroFramework.Controls.MetroLabel metroLabel16;
+        private MetroFramework.Controls.MetroLabel metroLabel28;
+        private MetroFramework.Controls.MetroLabel metroLabel25;
+        private MetroFramework.Controls.MetroLabel metroLabel26;
+        private MetroFramework.Controls.MetroLabel metroLabel27;
+        private MetroFramework.Controls.MetroLabel metroLabel24;
+        private MetroFramework.Controls.MetroLabel metroLabel23;
+        private MetroFramework.Controls.MetroLabel metroLabel22;
+        private MetroFramework.Controls.MetroLabel metroLabel21;
+        private MetroFramework.Controls.MetroLabel metroLabel20;
     }
 }
 
