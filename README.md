@@ -1,25 +1,24 @@
 # COVID-19Net
-A simple client (winforms) whos use JSON to get info about Coronavirus - made in C# (NET 4.5) - and with MetroFramework.
+A simple client (winforms) whos use JSON to get info about Coronavirus (COVID-19) Cases - made in C# (NET 4.5) - and with MetroFramework, Newtonsoft.JSON and other libraries. 
 
-#Screenshots - Home screen
-![Captura de tela](https://github.com/MardSilva/COVID-19Net/blob/master/screenshots/homescreen.png)
+# How does COVID-19Net work?
+The COVID-19Net application checks for updates to the numbers related to COVID-19 (Corona virus) so that you can track and keep up to date with these numbers.
 
-#Mundial info - Tab
-![Captura de tela](https://github.com/MardSilva/COVID-19Net/blob/master/screenshots/generals.png)
+As it is data retrieved through an API, it allows you to save the .JSON file if you want to use it, and to do some data processing with this information.
 
-#Mundial info - Tab
-![Captura de tela](https://github.com/MardSilva/COVID-19Net/blob/master/screenshots/generals.png)
+# General Info about COVID-19Net - General Interface
+As you can see below, you can navigate through the tools through the tabs or radio buttons at the bottom:
+![Captura de tela](https://github.com/MardSilva/COVID-19Net/blob/master/screenshots/interface.gif)
 
-#You can set themes, too! - Dark or Light. And color too! (Dark Theme)
-![Captura de tela](https://github.com/MardSilva/COVID-19Net/blob/master/screenshots/themes.png)
+# General Info about COVID-19Net - Mundial Info and All Countries Info
+As you can see below, you can get worldwide data (grand total) and also a table of data by countries:
+![Captura de tela](https://github.com/MardSilva/COVID-19Net/blob/master/screenshots/tools.gif)
 
-#You can set themes, too! - Dark or Light. And color too! (Light Theme)
-![Captura de tela](https://github.com/MardSilva/COVID-19Net/blob/master/screenshots/themes2.png)
+# General Info about COVID-19Net - Mundial Info and All Countries Info
+As you can see below, you can get to customize your application's interface with colors and themes!
+![Captura de tela](https://github.com/MardSilva/COVID-19Net/blob/master/screenshots/themes.gif)
 
-If you want to download, click on this link -> http://www.mediafire.com/file/pr48ufuqocvc5v0/COVID-19Net.rar/file
-1) Extract the files;
-2) Run the setup exe;
-3) Open Start Menu and search for Eymard Silva (Esware);
-4) Tadaaa! Run and get informations :)
+# How can I download the app?
+>> Go to the 'Installers' folder --> https://github.com/MardSilva/COVID-19Net/tree/master/Installers
 
-#Version - 1.0.0.2 (Still Updating)
+>> You can download following this link --> https://github.com/MardSilva/COVID-19Net/blob/master/Installers/COVID-19Net_v2.0-setup.exe?raw=true
