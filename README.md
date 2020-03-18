@@ -22,3 +22,7 @@ As you can see below, you can get to customize your application's interface with
 Go to the 'Installers' folder --> https://github.com/MardSilva/COVID-19Net/tree/master/Installers
 
 You can download following this link --> https://github.com/MardSilva/COVID-19Net/blob/master/Installers/COVID-19Net_v2.0-setup.exe?raw=true
+
+# COVID-19Net Changelog
+ - 1.X | Initial release.
+ - 2.X | Refactoring methods, Fix some issues and improve stability, Creating the application installer.
