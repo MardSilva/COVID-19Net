@@ -7,7 +7,7 @@ The COVID-19Net application checks for updates to the numbers related to COVID-1
 As it is data retrieved through an API, it allows you to save the .JSON file if you want to use it, and to do some data processing with this information.
 
 # General Info about COVID-19Net - General Interface
-As you can see below, you can navigate through the tools through the tabs or radio buttons at the bottom:
+As you can see below, you can navigate on the app through the tabs or buttons at the bottom:
 ![Captura de tela](https://github.com/MardSilva/COVID-19Net/blob/master/screenshots/interface.gif)
 
 # General Info about COVID-19Net - Mundial Info and All Countries Info
