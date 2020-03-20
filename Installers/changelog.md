@@ -1,6 +1,7 @@
-# There is the COVID-19Net Changelog. 
+# There is the COVID-19Net Changelog
 
-See all the changes/version we have build/updated:
+
+##See all the changes/version we have build/updated:
 
 Versão 1.0.0.X
 - Adição das APIs, e criação dos arquivos para serem salvos na pasta (JSON).
