@@ -7,4 +7,4 @@ df2 = df[:5] # Separa em um novo dataframe as 5 primeiras linhas
 
 plt.bar(df2['Dados do País'],df2['Casos Ativos']) #cria o grafico de barras (nomes,valores)
 plt.ylabel('Quantidade de casos ativos') #label do eixo y
-plt.savefig('grafico.png') #salva a imagem
+plt.savefig('grafico.png') #salva a imagem (poder ser salvo como pdf mudando o nome do arquivo
