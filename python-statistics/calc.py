@@ -14,8 +14,8 @@ class calc:
 		fig, ax = plt.subplots()
 
 		index = np.arange(len(df2['Casos Ativos'])) #indice para definir as posicoes dos labels
-		bar_width = 0.45
-		score_label = np.arange(0,42000,3000)
+		bar_width = 0.45 #grossura da barra
+		score_label = np.arange(0,50000,5000) #array com volares a serem apresentados no eixo y
 		bar = ax.bar(index, df2['Casos Ativos'], bar_width, label='Casos Ativos',color='#ff4500')
 		
 		#setting axis labels
@@ -23,11 +23,18 @@ class calc:
 		ax.set_xticklabels(df2['Dados do País']) #label das barras
 		ax.set_yticks(score_label) #distancia entre marcas do eixo y
 		ax.set_yticklabels(score_label) #labels das marcas do eixo y
-
 		ax.legend() #legenda
-		
-		#plt.bar(df2['Dados do País'],df2['Casos Ativos'],color='r') #cria o grafico de barras (nomes,valores)
-		#plt.ylabel('Quantidade de casos ativos') #label do eixo y
+
+		#ciclo para plotar os labels
+		for i in index:
+			ax.annotate('{}'.format(bar[i].get_height()), #string a ser plotada
+						xy=(bar[i].get_x(),bar[i].get_height()), #local da plotagem do label
+						xytext=(0,2), #movimentacao adicional do label
+						textcoords='offset points',
+						va='bottom'
+						)
+
+		plt.title('Paises com mais casos ativos')
 
 		#Se true, o tipo selecionado sera pdf, senao png
 		if tipPDF:
@@ -43,8 +50,28 @@ class calc:
 		df = df.sort_values(by=['Quantidade de Mortes'], ascending=False) #ordena pela coluna 'casos ativos' de forma descendente
 		df2 = df[:5] # Separa em um novo dataframe as 5 primeiras linhas
 
-		plt.bar(df2['Dados do País'],df2['Quantidade de Mortes'],align='center', alpha=0.5)
-		plt.ylabel('Quantidade de Mortos')
+		fig, ax = plt.subplots()
+
+		index = np.arange(len(df2['Quantidade de Mortes']))
+		bar_width = 0.45
+		score_label = np.arange(0,6000,1000)
+		bar = ax.bar(index, df2['Quantidade de Mortes'], bar_width, label='Quantidade de Mortes',color='#cc0000')
+
+		ax.set_xticks(index) #distancia entre barras
+		ax.set_xticklabels(df2['Dados do País']) #label das barras
+		ax.set_yticks(score_label) #distancia entre marcas do eixo y
+		ax.set_yticklabels(score_label) #labels das marcas do eixo y
+		ax.legend()
+
+		#ciclo para plotar os labels
+		for i in index:
+			ax.annotate('{}'.format(bar[i].get_height()), #string a ser plotada
+						xy=(bar[i].get_x(),bar[i].get_height()), #local da plotagem do label
+						xytext=(0,2), #movimentacao adicional do label
+						textcoords='offset points',
+						va='bottom'
+						)
+
 		plt.title('Paises com mais mortes')
 
 		if tipPDF:
