@@ -1,4 +1,6 @@
+# coding=<utf-8>
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 
 class calc:
@@ -9,8 +11,23 @@ class calc:
 		df = df.sort_values(by=['Casos Ativos'], ascending=False) #ordena pela coluna 'casos ativos' de forma descendente
 		df2 = df[:5] # Separa em um novo dataframe as 5 primeiras linhas
 
-		plt.bar(df2['Dados do País'],df2['Casos Ativos'],color='r') #cria o grafico de barras (nomes,valores)
-		plt.ylabel('Quantidade de casos ativos') #label do eixo y
+		fig, ax = plt.subplots()
+
+		index = np.arange(len(df2['Casos Ativos'])) #indice para definir as posicoes dos labels
+		bar_width = 0.45
+		score_label = np.arange(0,42000,3000)
+		bar = ax.bar(index, df2['Casos Ativos'], bar_width, label='Casos Ativos',color='#ff4500')
+		
+		#setting axis labels
+		ax.set_xticks(index) #distancia entre barras
+		ax.set_xticklabels(df2['Dados do País']) #label das barras
+		ax.set_yticks(score_label) #distancia entre marcas do eixo y
+		ax.set_yticklabels(score_label) #labels das marcas do eixo y
+
+		ax.legend() #legenda
+		
+		#plt.bar(df2['Dados do País'],df2['Casos Ativos'],color='r') #cria o grafico de barras (nomes,valores)
+		#plt.ylabel('Quantidade de casos ativos') #label do eixo y
 
 		#Se true, o tipo selecionado sera pdf, senao png
 		if tipPDF:
